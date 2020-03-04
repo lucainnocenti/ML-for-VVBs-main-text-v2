@@ -142,8 +142,8 @@ Despite the potential of \acp{VVB}, many questions regarding the decoding of inf
 These introduce detrimental effects of loss and noise~\cite{Qassim2014}. Moreover, the challenge of performing state tomography in such a high-dimensional framework, a fundamental task in quantum information processing~\cite{Paris2004, Banaszek_2013}, can hardly be overestimated. The design and demonstration of reliable techniques for the generation and classification of~\acp{VVB} is thus highly desirable. Indeed, substantive efforts on finding novel platforms are subject of intense research activities~\cite{Liu:17,Ndagano:18, Cardano2015Rev,roadMap},
 including in integrated photonics~\cite{ oamchip,cai2012integrated,chiptofiber} and generation by plasmonic metasurfaces~\cite{karimi2014,yue2016}.
 
-Recently,~\ac{ML} has emerged as a versatile toolbox to tackle a variety of tasks arising in experimental platforms. It has proven useful, in particular, to ease the characterization of quantum protocols and dynamics~\cite{carrasquilla2019reconstructing, tairelly, agresti2019pattern,lumino2018,rocchetto2019,butler2018,fischer2006,melnikov,wangpaesani}.
-In the context of structured light, \acp{NN} have been used to classify \ac{OAM} states of classical light for long distance free-space communication, even in the presence of environmental turbulence~\cite{krenn_2014,krenn_2016,Doster_17, Park_18, Lohani_turbo_18, Li_18}\add{, and to classify OAM states with fractional topological charge~{\cite{Zhanwei_oamCNN}}}.
+Recently,~\ac{ML} has emerged as a versatile toolbox to tackle a variety of tasks arising in experimental platforms. It has proven useful, in particular, to ease the characterization of quantum protocols and dynamics~\cite{carrasquilla2019reconstructing, tairelly, Santagatieaap9646, agresti2019pattern,lumino2018,rocchetto2019,butler2018,fischer2006,melnikov,wangpaesani,Cimini2020}.
+In the context of structured light, \acp{NN} have been used to classify \ac{OAM} states of classical light for long distance free-space communication, even in the presence of environmental turbulence~\cite{krenn_2014,krenn_2016,Doster_17, Park_18, Lohani_turbo_18, Li_18}\add{, and to classify structured light with fractional topological charge~{\cite{Zhanwei_oamCNN}}}.
 In this Letter, we apply \ac{ML} to characterize experimental \acp{VVB} generated using a platform
 based on photonic {\acp{QW}} in the \ac{OAM} and polarization degrees of freedom~\cite{Innocenti2017,giordani_2018}.
 Our approach requires neither additional interferometry stabilization nor spatial filtering, thus providing a robust strategy to decode information stored in \acp{VVB}, and is therefore a promising pathway towards managing higher-dimensional quantum systems. 
@@ -155,7 +155,7 @@ of the underlying space associated to the experimental data.
 While significantly easier to use, such approach gives comparable results to CNN,
 at the cost of being more tailored to the specifics of the problem.
 
-Our work makes significant steps forward  with respect to previous endeavours: while Refs.~\cite{krenn_2014,krenn_2016,Doster_17, Park_18, Lohani_turbo_18, Li_18} leverage NNs to process OAM states, our work is the first to tackle VVBs. Moreover, owing to the variety of techniques we deploy, we can address both classification and regression tasks, thus enabling the reconstruction of the input states in relevant cases of structured light beams.
+Our work makes significant steps forward  with respect to previous endeavours: while Refs.~\cite{krenn_2014,krenn_2016,Doster_17, Park_18, Lohani_turbo_18, Li_18, Zhanwei_oamCNN} leverage NNs to process OAM states, our work is the first to tackle VVBs. Moreover, owing to the variety of techniques we deploy, we can address both classification and regression tasks, thus enabling the reconstruction of the input states in relevant cases of structured light beams.
 Our findings demonstrate the reliability of a broader class of ML methods, providing novel recognition methods to deal with VVB, which are a building block for several information protocols with high-dimensional systems.
 
 
@@ -203,14 +203,14 @@ We then collect images associated with different \acp{VVB} and use them to train
 
 \begin{figure}[b]
     \centering
-     \includegraphics[width=\columnwidth]{Fig2.pdf}
+     \includegraphics[width=\columnwidth]{Fig2_allgreen.pdf}
     \caption{
-    {\bf a,} 
-    \replace{Working principles of CNNs. The training set consists of a series of simulated images, plus some others collected from the experimental platform.}{Schematic representation of VVBs classification via CNNs.}
+    {\bf a,} %\replace{Working principles of CNNs. The training set consists of a series of simulated images, plus some others collected from the experimental platform.}
+\add{Schematic representation of VVBs classification via CNNs.}
     {\bf b,} 
     Classification scheme using linear PCA.
-    After reducing the dimensionality of the dataset via PCA, a linear SVM is used to classify experimental images. 
-    \add{The green the red boxes highlight pictorially right and wrong classifications.}}
+    After reducing the dimensionality of the dataset via PCA, a linear SVM is used to classify experimental images.} 
+  %  \add{The green and the red boxes highlight pictorially right and wrong classifications.}}
     \label{fig:class_techniques}
 \end{figure}
 
@@ -220,7 +220,7 @@ We then collect images associated with different \acp{VVB} and use them to train
     \caption{ 
     \textbf{a,} Simulated and experimental images of \acp{VVB} corresponding to some of the values $(m_1,m_2)$ given in the table.
     \textbf{b,} Scaling of the average accuracy \add{$\mathcal{A}$} when classifying states into one of the $15$ VVB classes, against the fraction of experimental images added to the training set. The leftmost point refers to the case in which only simulated images are used to train the network.
-    Inset: truth table\add{, reporting how the network classifies images belonging to each class}.
+    Inset: truth table\add{ reporting how the network classifies images belonging to each class}.
     Each row (column) corresponds to a possible pair $(m_1,m_2)$.
     The matrix elements have been averaged over $100$ experimental images per class. 
     }%}
@@ -241,17 +241,18 @@ In these conditions, the network achieves an accuracy of $100\%$.
 \add{The term \textit{accuracy} is used here to refer to the fraction of correctly classified images.}
 We then collect $100$ experimental images per class, to use as new validation set (cf. Fig.~\ref{fig:class_techniques}{\bf a}).
 Fig.~\ref{fig:resultsCNN}{\bf a}-{\bf b} shows the average accuracy per class against the fraction of experimental images added to the training set.
-\add{The addition of a small fraction of experimental images to the training set improves the capability of the network to take into account deviations between experimental states and ideal LG modes %\cite{karimi_07,karimi_09, 
-\cite{Rafayelyan,Shu:16,Vallone:16}.}
-\remove{Remarkably, a small increase of the number of experimental images in the training set results in a good accuracy reached by the network}
-(cf. Fig.~\ref{fig:resultsCNN}{\bf b}): an average accuracy of $\sim 0.989$ is already obtained when $12.5\%$ of the training set is composed of experimental images.
-\add{To further highlight the generalization capabilities of CNNs, we also trained a CNN using exclusively experimental images, but using a small number of images images in the training phase. Using only $20$ images per class, we already get an accuracy of $0.99$ to classify the rest of the experimental images (which are $1668$ in total).}
+\add{The addition of a small fraction of experimental images to the training set improves the capability of the network to take into account deviations of the experimental states from ideal LG modes \cite{karimi_07,karimi_09, 
+Rafayelyan,Shu:16,Vallone:16}}
+%\remove{Remarkably, a small increase of the number of experimental images in the training set results in a good accuracy reached by the network}
+(cf. Fig.~\ref{fig:resultsCNN}{\bf b}). An average accuracy of $\sim 0.989$ is already obtained when $12.5\%$ of the training set is composed of experimental images.
+\add{To further highlight the performance of the network, %generalization capabilities of CNNs, 
+we also trained a CNN using exclusively experimental images, but using a small number of images in the training phase. Using only $20$ images per class, we already get an accuracy of $0.99$ to classify the rest of the experimental images (which are $1668$ in total).}
 
 We use a similar approach to retrieve the position on the Poincar\'e sphere corresponding to states generated with fixed $(m_1,m_2)$.
 In particular, we test the performance of CNNs to retrieve the values $(\theta,\phi)$ of VVBs corresponding to $m_2=-m_1=1$.
-\replace{To achieve this, the network should}{The CNN is thus trained to} discriminate both rotations in the polarization patterns (corresponding to changes of $\phi$), and variations in the color tone (corresponding to changes of $\theta$).
-\remove{A drawback of using any type of classifier for this task is that VVBs with $|m_i|\gg1$ display a polarization pattern whose periodicity decreases as $\frac{2\pi}{|m_1-m_2|}$ (cf. Fig.~\mbox{\ref{fig:resultsCNN}}{\bf a})~\mbox{\cite{fickler2012quantum,dambrosio_gear2013}}.
-This complicates the recognition of $\phi$, as changes in the phase generate only small rotations of the pattern.}
+%\replace{To achieve this, the network should}
+\add{The CNN is thus trained to} discriminate both rotations in the polarization patterns (corresponding to changes of $\phi$), and variations in the color tone (corresponding to changes of $\theta$).
+%\remove{A drawback of using any type of classifier for this task is that VVBs with $|m_i|\gg1$ display a polarization pattern whose periodicity decreases as $\frac{2\pi}{|m_1-m_2|}$ (cf. Fig.~\mbox{\ref{fig:resultsCNN}}{\bf a})~\mbox{\cite{fickler2012quantum,dambrosio_gear2013}}.This complicates the recognition of $\phi$, as changes in the phase generate only small rotations of the pattern.}
 % Furthermore, the classification of the VVB on the sphere requires a discretization of  $\theta$ and $\phi$, which results in dividing the sphere in sectors
 To frame this as a classification task, we partition the sphere in $26$ disjoint sectors.
 % \remove{The latter is divided in 26 sectors as follows}
@@ -259,10 +260,11 @@ Working in spherical coordinates, we partition
 $\theta$ in $3$ intervals $\left[k \frac{\pi}{8}, (k+2) \frac{\pi}{8}\right]$ with $k=1,3,5$, and $\phi$ in the $8$ intervals $\left[t \frac{\pi}{4}, (t+1) \frac{\pi}{4}\right]$ with $t \in \{0,...,7\} $.
 % \replace{The remaining two classes, representing the two poles, correspond to $\theta \in \left[0, \frac{\pi}{8}\right]$ and $ \left[ \frac{7}{8} \pi, \pi\right]$, with no distinction in $\phi$ (cf. Fig. \mbox{\ref{fig:PCAresults}}{\bf a}).}{%
 This leaves two classes, surrounding the two poles, corresponding to $\theta \in \left[0, \frac{\pi}{8}\right]$ and $ \theta\in\left[ \frac{7}{8} \pi, \pi\right]$.
-\add{Partitioning makes VVBs close to the border of two sectors naturally hard to classify, but nonetheless provides information about the suitability of CNNs for this type of task.}
 % \replace{The network is then trained with simulated images corresponding to different positions on the sphere. We generate $500$}
 We train the CNN with $500$ simulated images per class in the training set, and $125$ per class in the validation one. The maximum achieved accuracy is $\sim 0.90$.
-\replace{This result, which is inferior with respect to what is achieved by only inferring $m_{1,2}$, confirms the suboptimality of the method when we had to artificially coarse-grain two continuous parameters.}{The suboptimality of this result is likely consequence of framing the problem as a classification task. Training a CNN for the corresponding regression task will potentially perform much better.}
+%\replace{This result, which is inferior with respect to what is achieved by only inferring $m_{1,2}$, confirms the suboptimality of the method when we had to artificially coarse-grain two continuous parameters.}{
+%, but nonetheless provides information about the suitability of CNNs for this type of task
+\add{The sub-optimality of this result is likely a consequence of framing the problem as a classification task. Indeed, partitioning makes VVBs close to the border of two sectors naturally hard to classify. Training a CNN for the corresponding regression task will potentially improve performance.}
 
 \emph{Dimensionality reduction--}
 We now present an alternative approach to classify {\acp{VVB}} from experimental data, 
@@ -286,23 +288,25 @@ This resembles a form of \emph{unsupervised} learning, as we gain useful informa
     Comparison between experimental and simulated \ac{VVB} images for different angles $(\theta, \phi)$.
     \textbf{c,}
     Distribution of fidelities obtained comparing each experimental VVBs with its reduced 3D representations given by PCA.
-    \add{In the inset, we show how}
-    projecting each image onto its first three principal axes \remove{and rescaling} maps the data (orange points) onto a sphere\remove{, as shown in the inset}. \replace{The inner (outer) black (semi-transparent) sphere is added for contrast [radius equal to that of the point with smaller (larger) radius]}{To add contrast and give a better idea of how close to the surface the points are, we added a pair of spheres (the inner black one, and the outer semi-transparent one) with radii equal to that of the point closer and further away from the origin}.
+    \add{In the inset, we show how}, the 
+    projection of each image onto its first three principal axes maps the data (orange points) onto a sphere. %\replace{The inner (outer) black (semi-transparent) sphere is added for contrast [radius equal to that of the point with smaller (larger) radius]}
+    \add{To add contrast and give a better idea of how close to the surface the points are, we added a %pair of spheres (the 
+    inner black sphere to the outer semi-transparent one, with radii equal to that of the point closer and further away from the origin}.
     \textbf{d,}
     Average prediction accuracy \add{$\mathcal{A}$} of a linear SVM classifier, trained and tested after applying linear DR to the data, against the number of reduced dimensions $n_c$.
-    For each of the 15 classes (cf. Fig.~\ref{fig:resultsCNN}a) in which the experimental dataset was divided, we show in the inset the \replace{true-}{truth} table. 
+    For each of the 15 classes (cf. Fig.~\ref{fig:resultsCNN}a) in which the experimental dataset was divided, we show in the inset the \add{truth} table. 
     }%
     \label{fig:PCAresults}
 \end{figure}
 
 As a notable example, we apply these observations to \acp{VVB} with $m_2=-m_1=1$, which can be represented on a sphere in the higher-order Poincar\'e representation. 
-Indeed, applying PCA to the experimental dataset of Fig.~\ref{fig:PCAresults}{\bf b}, reveals that three directions are sufficient to capture most of the information content of the images. Projecting the images along the first three principal components, we find the arranged on a three-dimensional sphere embedded in the high-dimensional space of experimental images (cf. inset of Fig.~\ref{fig:PCAresults}{\bf c}).
+Indeed, applying PCA to the experimental dataset of Fig.~\ref{fig:PCAresults}{\bf b}, reveals that three directions are sufficient to capture most of the information content of the images. Projecting the images along the first three principal components, we find the arranged on a three-dimensional sphere embedded in the experimental high-dimensional space (cf. inset of Fig.~\ref{fig:PCAresults}{\bf c}) \add{that allows to retrieve the state's position on the Poincar\'e sphere overcoming the border problem characterizing the previous classification method}.
 Remarkably, this was not obvious from the experimental dataset alone, but was easily revealed using \ac{DR}. This result highlights the potential of \ac{DR} to reveal features of the underlying states generating a given experimental dataset in realistic experimental conditions (cf.~\cite{SI}).
 \add{Interpreting this reduced three-dimensional representation as a Bloch sphere, we can use PCA to retrieve a complete description of the state generating a given experimental image.
 % that allows to retrieve the state's position on the Poincar\'e sphere overcoming the border problem characterizing the previous classification method.
 }
 To assess the accuracy of such reconstruction, we compute the average fidelity $\mathcal F_{\text{avg}}$ between the state generating a given image and the one retrieved from said image via PCA, averaging over many experimental images.
-\add{The fidelity is here defined in the usual way as }
+\add{The fidelity between two states is here defined in the usual way as $\mathcal F(\rho,\sigma)\equiv \Tr|\sqrt\rho\sqrt\sigma|$.}
 % \add{The fidelity allows to measure the "closeness" of the two quantum states computing their inner product. }
 As shown in the histogram of Fig.~\ref{fig:PCAresults}c, this is found to be $\mathcal F_{\text{avg}}\sim0.96$, with standard deviation $\sim0.01$, thus showcasing the quality of the reconstruction.
 
@@ -323,16 +327,12 @@ In particular, DR was used to obtain a deeper understanding of the underlying ge
 By embedding a variety of {\ac{ML}} algorithms into our experimental pipeline, the task of characterising structured light is made significantly broader in the methods, ranging from supervised to unsupervised learning, and more flexible in the applications, classification and regression tasks.
 While paving the way to further experimental validations -- potentially also in experimental settings that do not rely on optical networks -- we believe that numerous tasks of relevance to modern photonics could benefit from introducing similar {\ac{ML}} ideas into their characterization protocols. These techniques can prove to be useful add-on to tasks ranging from the design of automatized approaches to the characterization of experimental platforms and experiments, to the provision of solutions to OAM demultiplexing in the context of classical and quantum communication and, more generally, for the use of structured light in quantum technologies.
 
-\textit{Note--} During the reviewing process of this manuscript, the authors
-became aware of a related work~\cite{Zhanwei_oamCNN} addressing a similar topic. \add{Unlike our manuscript, whose purpose requires the ability to capture information stored in both the orbital angular momentum (encoded into the integer quantum numbers
-$m$) and the polarization pattern
-of a vectorial field, in Ref.~\cite{Zhanwei_oamCNN} a convolutional neural networks is trained to classify vortex beams with fractional orbital number $m$.}
-
-
-
+%\textit{Note--} During the reviewing process of this manuscript, the authors became aware of a related work~\cite{Zhanwei_oamCNN} addressing a similar topic. %\add{Unlike our manuscript, whose purpose requires the ability to capture information stored in both the orbital angular momentum (encoded into the integer quantum numbers
+% $m$) and the polarization pattern
+% of a vectorial field, in Ref.~\cite{Zhanwei_oamCNN} a convolutional neural networks is trained to classify vortex beams with fractional orbital number $m$.}
 
 \begin{acknowledgments}
-\textit{Acknowledgments--} We acknowledge support from the ERC-Advanced grant PHOSPhOR (Photonics of Spin-Orbit Optical Phenomena; 
+\textit{Acknowledgments--} We acknowledge support from the ERC Advanced grant PHOSPhOR (Photonics of Spin-Orbit Optical Phenomena; 
 Grant Agreement No. 828978), the EU Collaborative project TEQ (grant nr. 766900), Fondazione Angelo della Riccia, the DfE-SFI Investigator Programme (grant 15/IA/2864), COST Action CA15220, the Royal Society Wolfson Research Fellowship (RSWF\textbackslash R3\textbackslash183013), the Leverhulme Trust Research Project Grant (grant nr.~RGP-2018-266).
 \end{acknowledgments}
 \bibliography{vvb}
