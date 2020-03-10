@@ -143,7 +143,7 @@ These introduce detrimental effects of loss and noise~\cite{Qassim2014}. Moreove
 including in integrated photonics~\cite{ oamchip,cai2012integrated,chiptofiber} and generation by plasmonic metasurfaces~\cite{karimi2014,yue2016}.
 
 Recently,~\ac{ML} has emerged as a versatile toolbox to tackle a variety of tasks arising in experimental platforms. It has proven useful, in particular, to ease the characterization of quantum protocols and dynamics~\cite{carrasquilla2019reconstructing, tairelly, Santagatieaap9646, agresti2019pattern,lumino2018,rocchetto2019,butler2018,fischer2006,melnikov,wangpaesani,Cimini2020}.
-In the context of structured light, \acp{NN} have been used to classify \ac{OAM} states of classical light for long distance free-space communication, even in the presence of environmental turbulence~\cite{krenn_2014,krenn_2016,Doster_17, Park_18, Lohani_turbo_18, Li_18}\add{, and to classify structured light with fractional topological charge~{\cite{Zhanwei_oamCNN}}}.
+In the context of structured light, \acp{NN} have been used to classify \ac{OAM} states of classical light for long distance free-space communication, even in the presence of environmental turbulence~\cite{krenn_2014,krenn_2016,Doster_17, Park_18, Lohani_turbo_18, Li_18}.
 In this Letter, we apply \ac{ML} to characterize experimental \acp{VVB} generated using a platform
 based on photonic {\acp{QW}} in the \ac{OAM} and polarization degrees of freedom~\cite{Innocenti2017,giordani_2018}.
 Our approach requires neither additional interferometry stabilization nor spatial filtering, thus providing a robust strategy to decode information stored in \acp{VVB}, and is therefore a promising pathway towards managing higher-dimensional quantum systems. 
@@ -155,7 +155,7 @@ of the underlying space associated to the experimental data.
 While significantly easier to use, such approach gives comparable results to CNN,
 at the cost of being more tailored to the specifics of the problem.
 
-Our work makes significant steps forward  with respect to previous endeavours: while Refs.~\cite{krenn_2014,krenn_2016,Doster_17, Park_18, Lohani_turbo_18, Li_18, Zhanwei_oamCNN} leverage NNs to process OAM states, our work is the first to tackle VVBs. Moreover, owing to the variety of techniques we deploy, we can address both classification and regression tasks, thus enabling the reconstruction of the input states in relevant cases of structured light beams.
+Our work makes significant steps forward  with respect to previous endeavours: while Refs.~\cite{krenn_2014,krenn_2016,Doster_17, Park_18, Lohani_turbo_18, Li_18} leverage NNs to process OAM states, our work is the first to tackle VVBs. Moreover, owing to the variety of techniques we deploy, we can address both classification and regression tasks, thus enabling the reconstruction of the input states in relevant cases of structured light beams.
 Our findings demonstrate the reliability of a broader class of ML methods, providing novel recognition methods to deal with VVB, which are a building block for several information protocols with high-dimensional systems.
 
 
@@ -327,7 +327,8 @@ In particular, DR was used to obtain a deeper understanding of the underlying ge
 By embedding a variety of {\ac{ML}} algorithms into our experimental pipeline, the task of characterising structured light is made significantly broader in the methods, ranging from supervised to unsupervised learning, and more flexible in the applications, classification and regression tasks.
 While paving the way to further experimental validations -- potentially also in experimental settings that do not rely on optical networks -- we believe that numerous tasks of relevance to modern photonics could benefit from introducing similar {\ac{ML}} ideas into their characterization protocols. These techniques can prove to be useful add-on to tasks ranging from the design of automatized approaches to the characterization of experimental platforms and experiments, to the provision of solutions to OAM demultiplexing in the context of classical and quantum communication and, more generally, for the use of structured light in quantum technologies.
 
-%\textit{Note--} During the reviewing process of this manuscript, the authors became aware of a related work~\cite{Zhanwei_oamCNN} addressing a similar topic. %\add{Unlike our manuscript, whose purpose requires the ability to capture information stored in both the orbital angular momentum (encoded into the integer quantum numbers
+
+\textit{Note--} During the reviewing process of this manuscript, the authors became aware of a related work~\cite{Zhanwei_oamCNN}, \add{that addresses the classification of scalar fields with fractional topological charge}. %\add{Unlike our manuscript, whose purpose requires the ability to capture information stored in both the orbital angular momentum (encoded into the integer quantum numbers
 % $m$) and the polarization pattern
 % of a vectorial field, in Ref.~\cite{Zhanwei_oamCNN} a convolutional neural networks is trained to classify vortex beams with fractional orbital number $m$.}
 
